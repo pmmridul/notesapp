@@ -31,6 +31,6 @@ yarn-error.log*
 
 /secrets
 /venv
-/api/__pycache__
-/api/migrations/__pycache__
-/notesapp/__pycache__
+/api/__pycache__/
+/api/migrations/__pycache__/
+/notesapp/__pycache__/
