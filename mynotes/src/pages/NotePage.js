@@ -10,7 +10,7 @@ const NotePage = () => {
   useEffect(() => {
     let getNote = async () => {
       if (id === 'new') return
-      let response = await fetch(`/api/notes/${id}`)
+      let response = await fetch(`${process.env.REACT_APP_API_URL}/api/notes/${id}`)
       let data = await response.json()
       console.log(data)
       setNote(data)
@@ -19,7 +19,7 @@ const NotePage = () => {
   }, [id])
 
   let createNote = async () => {
-    await fetch(`/api/notes/create/`, {
+    await fetch(`${process.env.REACT_APP_API_URL}/api/notes/create/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ const NotePage = () => {
   }
 
   let updateNote = async () => {
-    await fetch(`/api/notes/${id}/update/`, {
+    await fetch(`${process.env.REACT_APP_API_URL}/api/notes/${id}/update/`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ const NotePage = () => {
   }
 
   let deleteNote = async () => {
-    await fetch(`/api/notes/${id}/delete/`, {
+    await fetch(`${process.env.REACT_APP_API_URL}/api/notes/${id}/delete/`, {
       method: 'DELETE'
     })
     navigate('/')
