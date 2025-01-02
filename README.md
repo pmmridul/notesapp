@@ -50,7 +50,7 @@ python manage.py createsuperuser
 ```
 6. Run the server
 ```
-python manage.py runserver
+python manage.py runserver 0.0.0.0:8000
 ```
 
 ## Frontend - React
