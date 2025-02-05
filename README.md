@@ -89,10 +89,16 @@ cd mynotes
 npm install
 ```
 
-3. Populate frontend EXAMPLE ENV `.env.example` file at inside `mynotes` directory and rename it to `.env`.
+1. Populate frontend EXAMPLE ENV `.env.example` file inside `mynotes` directory and rename it to `.env`.
 
-4. Run the app
+2. Run the app
 
 ```
 npm start
+```
+
+3. To build, run
+
+```
+npm run-script build
 ```

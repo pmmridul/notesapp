@@ -38,3 +38,5 @@ yarn-error.log*
 
 *.sqlite3*
 **/__pycache__/*
+
+/logs
