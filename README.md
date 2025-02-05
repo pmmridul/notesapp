@@ -100,5 +100,5 @@ npm start
 3. To build, run
 
 ```
-npm run-script build
+npm run build
 ```
