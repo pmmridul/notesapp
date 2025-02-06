@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notesapp-be
+  namespace: notesapp
+  labels:
+    app: notesapp-be
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: notesapp-be
+  template:
+    metadata:
+      labels:
+        app: notesapp-be
+    spec:
+      containers:
+        - name: notesapp-be
+          image: pmmridul/notesapp:be-latest
+          # env:
+          #   - name: DB_HOST
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: notesapp-be-secrets
+          #         key: DB_HOST
+          #   - name: DB_USER
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: notesapp-be-secrets
+          #         key: DB_USER
+          #   - name: DB_PASSWORD
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: notesapp-be-secrets
+          #         key: DB_PASSWORD
+          #   - name: APP_URL
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: notesapp-be-secrets
+          #         key: APP_URL
+          #   - name: SECRET_KEY
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: notesapp-be-secrets
+          #         key: SECRET_KEY
+          envFrom:
+            - secretRef:
+                name: notesapp-be-secrets
+          ports:
+            - containerPort: 8000
+      imagePullSecrets:
+        - name: notesapp-dockerhub-secret
