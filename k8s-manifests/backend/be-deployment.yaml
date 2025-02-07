@@ -18,32 +18,12 @@ spec:
       containers:
         - name: notesapp-be
           image: pmmridul/notesapp:be-latest
-          # env:
-          #   - name: DB_HOST
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: notesapp-be-secrets
-          #         key: DB_HOST
-          #   - name: DB_USER
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: notesapp-be-secrets
-          #         key: DB_USER
-          #   - name: DB_PASSWORD
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: notesapp-be-secrets
-          #         key: DB_PASSWORD
-          #   - name: APP_URL
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: notesapp-be-secrets
-          #         key: APP_URL
-          #   - name: SECRET_KEY
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: notesapp-be-secrets
-          #         key: SECRET_KEY
+          imagePullPolicy: Always
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              python manage.py migrate --noinput &&
+              gunicorn --bind 0.0.0.0:8000 notesapp.wsgi --log-level debug
           envFrom:
             - secretRef:
                 name: notesapp-be-secrets

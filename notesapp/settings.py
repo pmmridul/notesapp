@@ -67,9 +67,10 @@ ROOT_URLCONF = 'notesapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR / 'mynotes/build'
-        ],
+         'DIRS': [],
+        # 'DIRS': [
+            # BASE_DIR / 'mynotes/build'
+        # ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -175,8 +176,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOWED_ORIGINS = [
     os.environ.get("APP_URL")
